@@ -1,0 +1,80 @@
+{
+	"name": "RemoveDuplicateRowsDF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "InputDataEmployee1_Dataset",
+						"type": "DatasetReference"
+					},
+					"name": "employee1source"
+				},
+				{
+					"dataset": {
+						"referenceName": "InputDataEmployee2_Dataset",
+						"type": "DatasetReference"
+					},
+					"name": "employee2source"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "OutputDataEmployees_Dataset",
+						"type": "DatasetReference"
+					},
+					"name": "DestinationDataTransformed"
+				}
+			],
+			"transformations": [
+				{
+					"name": "UnionDataEmployees"
+				},
+				{
+					"name": "aggregateDataEmployees"
+				},
+				{
+					"name": "SortUnionDataEmployees"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          empid as string,",
+				"          name as string,",
+				"          country as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> employee1source",
+				"source(output(",
+				"          empid as string,",
+				"          name as string,",
+				"          country as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> employee2source",
+				"employee1source, employee2source union(byName: true)~> UnionDataEmployees",
+				"UnionDataEmployees aggregate(groupBy(empid),",
+				"     each(match(name!='empid'), $$ = first($$))) ~> aggregateDataEmployees",
+				"aggregateDataEmployees sort(asc(empid, true)) ~> SortUnionDataEmployees",
+				"SortUnionDataEmployees sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          saleDate as string,",
+				"          salesItem as string,",
+				"          country as string,",
+				"          quantity as string",
+				"     ),",
+				"     partitionFileNames:['Output/Employees.csv'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> DestinationDataTransformed"
+			]
+		}
+	}
+}

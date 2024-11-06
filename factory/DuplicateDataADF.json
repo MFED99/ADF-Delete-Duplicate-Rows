@@ -1,0 +1,9 @@
+{
+	"name": "DuplicateDataADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0bd3773e-bd08-4c15-9d2b-045e9965a206",
+		"tenantId": "a4daf7e2-12d0-4a70-a569-1935f56b87f8"
+	}
+}
