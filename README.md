@@ -1,14 +1,14 @@
 # Suppression de lignes dupliquées dans des fichiers CSV avec Azure Data Factory
 
-## Description du Projet
+## 💡 Description du Projet
 L'objectif de ce projet est de montrer comment j'ai utilisé Azure Data Factory (ADF) pour consolider plusieurs fichiers CSV stockés dans Azure Blob Storage, éliminer les doublons en fonction de la colonne ID, puis sauvegarder les données nettoyées. Ce processus automatisé est particulièrement utile pour centraliser et dédupliquer des données provenant de différentes sources ou partitions.
 
-## Structure du Projet
+## 👣 Structure du Projet
 Étapes du Flux de Travail
 ### Création du Linked Service :
 J'ai commencé par configurer un Linked Service pointant vers Azure Blob Storage, où se trouvent mes fichiers CSV d’origine. Cette connexion permet à ADF d’accéder aux fichiers source et de les manipuler.
 
-##Création des Datasets :
+## Création des Datasets :
 Pour ce projet, j'ai créé un Dataset pour chaque fichier CSV dans Azure Blob Storage. Cependant, dans une utilisation plus générale, il est possible de créer un seul Dataset en passant les noms des fichiers en tant que paramètres, ce qui rend le processus plus dynamique et flexible.
 
 ## Conception du Data Flow :
