@@ -8,10 +8,10 @@ L'objectif de ce projet est de montrer comment j'ai utilisé Azure Data Factory 
 ### Création du Linked Service :
 J'ai commencé par configurer un Linked Service pointant vers Azure Blob Storage, où se trouvent mes fichiers CSV d’origine. Cette connexion permet à ADF d’accéder aux fichiers source et de les manipuler.
 
-## Création des Datasets :
+### Création des Datasets :
 Pour ce projet, j'ai créé un Dataset pour chaque fichier CSV dans Azure Blob Storage. Cependant, dans une utilisation plus générale, il est possible de créer un seul Dataset en passant les noms des fichiers en tant que paramètres, ce qui rend le processus plus dynamique et flexible.
 
-## Conception du Data Flow :
+### Conception du Data Flow :
 J'ai mis en place un Data Flow pour automatiser le traitement des fichiers CSV, avec les étapes suivantes :
 - Ajout des Sources : 
 Chaque fichier CSV est ajouté comme source distincte dans le Data Flow.
