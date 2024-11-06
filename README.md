@@ -3,7 +3,7 @@
 ## Description du Projet
 L'objectif de ce projet est de montrer comment j'ai utilisé Azure Data Factory (ADF) pour consolider plusieurs fichiers CSV stockés dans Azure Blob Storage, éliminer les doublons en fonction de la colonne ID, puis sauvegarder les données nettoyées. Ce processus automatisé est particulièrement utile pour centraliser et dédupliquer des données provenant de différentes sources ou partitions.
 
-##Structure du Projet
+## Structure du Projet
 Étapes du Flux de Travail
 ### Création du Linked Service :
 J'ai commencé par configurer un Linked Service pointant vers Azure Blob Storage, où se trouvent mes fichiers CSV d’origine. Cette connexion permet à ADF d’accéder aux fichiers source et de les manipuler.
